@@ -1,11 +1,11 @@
-const addText = function(){
-    const timer = document.getElementById("timer");
-    timer.textContent -= 1;
+let currentTime = 59;
+let timer = document.getElementById('timer');
+let counter = setInterval(countDown, 100);
+function countDown() {
+    timer.textContent = currentTime;
+    currentTime--; //
+    if (currentTime < 0) {
+        clearInterval(counter);
+        alert("Вы победили в конкурсе!");
     }
-
-    setInterval(addText, 100)
-    if (timer === 0) {
-        clearInterval(timer);
-        alert ("Вы победили в конкурсе!");
-    }
-  
+}

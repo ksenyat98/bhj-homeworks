@@ -1,18 +1,5 @@
 const dead = document.getElementById('dead');
 const lost = document.getElementById('lost');
-let time = 1000;
-let place = 1;
-let replaceMole = () => {
-    let newPlace = Math.floor(1 + Math.random() * 9 );
-    if ( newPlace == place ) {
-        replaceMole();
-        return;
-    }
-    document.getElementById(`hole${place}`).classList.remove('hole_has-mole');
-    document.getElementById(`hole${newPlace}`).classList.add('hole_has-mole');
-    place = newPlace;
-    setTimeout( function(){replaceMole();}, time );
-};
 
 let counterDead = 0;
 let counterLost = 0;
@@ -33,6 +20,11 @@ for ( holeIndex = 1; holeIndex < 10; holeIndex++ ) {
             counterDead = 0;
             counterLost = 0;
             dead.textContent = counterDead;
+        } else if (counterLost == 5) {
+            alert ('lose');
+            counterDead = 0;
+            counterLost = 0;
+            lost.textContent = counterLost;
         }
     });
 
